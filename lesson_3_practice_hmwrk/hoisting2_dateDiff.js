@@ -1,6 +1,18 @@
 (function(global) {
     function datediff(fromDate, toDate) {
         var startDate;
+        var now;
+        var = toDate;
+        var = diff;
+        var = date;
+        var = years;
+        var = months;
+        var = days;
+        var = hours;
+        var = minutes;
+        var = seconds;
+        var = diffDate;
+
         if (!fromDate) throw new Error('Date should be specified');
         startDate = new Date(1970, 0, 1, 0).getTime(),
         now = new Date(),
