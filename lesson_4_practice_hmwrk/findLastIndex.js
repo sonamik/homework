@@ -7,8 +7,10 @@ lastIndexOf(a, 1) // 5
 */
 
 var lastIndexOf = function(a, item) {
-    for(var i = a.length - 1; i >= 0; i--){
-        if(item === a[i]) return i;
+    for(var i = a.length - 1; i >= 0; i--) {
+        if(item === a[i]) {
+            return i;
+        }
     }
     return -1;
 }

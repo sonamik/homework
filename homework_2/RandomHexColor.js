@@ -13,10 +13,10 @@ function getRandomHexColor(){
 console.log(getRandomHexColor());
 
 
-fnction getNumber(){
-	return Math.random().toString(16).substr(2, 6);
-	// math.radom()-y talis e 0-1 simvol, 0.bl12bla...,
-	 // tostring(16)-y 16-akan hamakargi e veracum u darznum string,
-	  // substr(2, 6)-y vercnum e 2-rd simvol-ic minchev 6-rd-y,
-	   // aysinqn` .-ic heto
-}
+// function getNumber(){
+// 	return Math.random().toString(16).substr(2, 6);
+// 	// math.radom()-y talis e 0-1 simvol, 0.bl12bla...,
+// 	 // tostring(16)-y 16-akan hamakargi e veracum u darznum string,
+// 	  // substr(2, 6)-y vercnum e 2-rd simvol-ic minchev 6-rd-y,
+// 	   // aysinqn` .-ic heto
+// }

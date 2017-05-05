@@ -1,3 +1,5 @@
+// https://github.com/davebalmer/turtlewax/blob/master/hsv.js
+
 hsvtorgb = function(h, s, v) {
     var i; //hoisted
     var f; //hoisted

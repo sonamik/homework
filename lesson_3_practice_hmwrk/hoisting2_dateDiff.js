@@ -1,30 +1,32 @@
+// https://github.com/dmfilipenko/datediff/blob/master/datediff.js
+
 (function(global) {
     function datediff(fromDate, toDate) {
         var startDate;
         var now;
-        var = toDate;
-        var = diff;
-        var = date;
-        var = years;
-        var = months;
-        var = days;
-        var = hours;
-        var = minutes;
-        var = seconds;
-        var = diffDate;
+        var toDate;
+        var diff;
+        var date;
+        var years;
+        var months;
+        var days;
+        var hours;
+        var minutes;
+        var seconds;
+        var diffDate;
 
         if (!fromDate) throw new Error('Date should be specified');
-        startDate = new Date(1970, 0, 1, 0).getTime(),
-        now = new Date(),
-        toDate = toDate && toDate instanceof Date ? toDate : now,
-        diff = toDate - fromDate,
-        date = new Date(startDate + diff),
-        years = date.getFullYear() - 1970,
-        months = date.getMonth(),
-        days = date.getDate() - 1,
-        hours = date.getHours(),
-        minutes = date.getMinutes(),
-        seconds = date.getSeconds(),
+        startDate = new Date(1970, 0, 1, 0).getTime();
+        now = new Date();
+        toDate = toDate && toDate instanceof Date ? toDate : now;
+        diff = toDate - fromDate;
+        date = new Date(startDate + diff);
+        years = date.getFullYear() - 1970;
+        months = date.getMonth();
+        days = date.getDate() - 1;
+        hours = date.getHours();
+        minutes = date.getMinutes();
+        seconds = date.getSeconds();
         diffDate = {
             years: 0,
             months: 0,
@@ -34,15 +36,15 @@
             seconds: 0
         };
 
-    if (years < 0) return diffDate;
-    diffDate.years = years > 0 ? years : 0;
-    diffDate.months = months > 0 ? months : 0;
-    diffDate.days = days > 0 ? days : 0;
-    diffDate.hours = hours > 0 ? hours : 0;
-    diffDate.minutes = minutes > 0 ? minutes : 0;
-    diffDate.seconds = seconds > 0 ? seconds : 0;
-    return diffDate;
-}
+        if (years < 0) return diffDate;
+        diffDate.years = years > 0 ? years : 0;
+        diffDate.months = months > 0 ? months : 0;
+        diffDate.days = days > 0 ? days : 0;
+        diffDate.hours = hours > 0 ? hours : 0;
+        diffDate.minutes = minutes > 0 ? minutes : 0;
+        diffDate.seconds = seconds > 0 ? seconds : 0;
+        return diffDate;
+    }
 
     if (typeof define === "function" && define.amd) {
         define(function() {

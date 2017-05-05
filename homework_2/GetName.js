@@ -15,4 +15,4 @@ function getName(){
 // a.substring(8, a.length-1);  returns "AbracaDabra";
 // a.slice(8, -1);   -1 = a.length-1;
 
-// a.sunstring(-10, 6)  returns  "racarD";
+// a.substring(-10, 6)  returns  "racarD";

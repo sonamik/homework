@@ -5,9 +5,11 @@ but for any matrix.
 
 var m = getRandomMatrix(3, 4);
 var matrixIndexOf = function(m, item){
-    for(var row = 0; row < m.length; row++){
-        for (var col = 0; col < m[row].length; col++) {
-            if(item === m[row][col]) return 'row: ' + row + ', col: ' + col;
+    for(var i = 0; i < m.length; i++){
+        for (var j = 0; j < m[i].length; j++) {
+            if(item === m[i][j]) {
+                return 'row: ' + i + ', col: ' + j;
+            }
         }
     }
     return -1;

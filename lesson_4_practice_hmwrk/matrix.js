@@ -1,13 +1,13 @@
 /**
 If we have an array of arrays, we will say that we have a matrix.
-Create function 'getRandomMatrix which gets to arguments 'n' and 'm'
+Create function 'getRandomMatrix' which gets two arguments 'n' and 'm'
 and returns n by m matrix filled with random Integers from 0 to 100.
 */
 
 var getRandomMatrix = function(n, m){
     var myArray = new Array(n);
 
-    for( var i=0; i < myArray.length; i++ ) {
+    for( var i = 0; i < myArray.length; i++ ) {
         myArray[i] = new Array(m);
     }
 
@@ -18,7 +18,9 @@ var getRandomMatrix = function(n, m){
             // getRandomInt(100);
         }
     }
+}
 
+/**
     for(var row = 0; row < myArray.length; row++) {
         var st = '';
         for(var col = 0; col < myArray[row].length; col++) {
@@ -26,6 +28,7 @@ var getRandomMatrix = function(n, m){
         }
         console.log(st + '\n');
     }
-}
+
+*/
 
 getRandomMatrix(3, 4);
