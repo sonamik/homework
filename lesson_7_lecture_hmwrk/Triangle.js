@@ -4,8 +4,8 @@ which returns >= 0 value.
 */
 
 function Point(xCoord, yCoord){
-    this.xCoord = xCoord ? xCoord > 0 : 0;
-    this.yCoord = yCoord ? yCoord > 0 : 0;
+    this.xCoord = xCoord;
+    this.yCoord = yCoord;
 }
 
 function side(point1, point2){
