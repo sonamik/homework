@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Our first project</title>
+    <link rel="stylesheet" href="css/taskStyle.css" />
+</head>
+<body>
+<h1>My todo list</h1>
+<input id="new-task" type="text" name="fname" autofocus="autofocus">
+<button onclick="addItem()">Add</button>
+<ul id="todo-list">
+    <!--<li><input type="checkbox" name="vehicle" value="Bike"> Task 1 <a href="">X</a></li>-->
+    <!--<li><input type="checkbox" name="vehicle" value="Bike"> Task 2 <a href="">X</a></li>-->
+    <!--<li><input type="checkbox" name="vehicle" value="Bike"> Task 3 <a href="">X</a></li>-->
+</ul>
+<br>
+<div id="task-count">
+    <h5>All tasks: </h5> <h5 id="all-tasks" onload="getCount()"></h5>
+    <h5>Completed: </h5> <h5 id="completed-tasks" onload="getCompletedCount()"></h5>
+</div>
+<br>
+
+<div>
+    <form class="filter" action="index.html" method="post">
+        <input type="radio" id="selectAll" name="chosen-tasks" value="" checked onclick="filter()">All<br>
+        <input type="radio" id="selectCompleted" name="chosen-tasks" onclick="filter()">Completed<br>
+        <input type="radio" id="selectNonCompleted" name="chosen-tasks" onclick="filter()">Non Completed<br>
+    </form>
+</div>
+<br>
+
+<div class="search">
+    <!-- <form class="newSearch" action="main.js" method="post"> </form> -->
+    <input id="search" type="text">
+    <button type="button" onclick="search()">search</button>
+</div>
+<br>
+
+<script src="js/main.js"></script>
+</body>
+</html>
