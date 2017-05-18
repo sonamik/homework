@@ -11,20 +11,25 @@ function ToDoList(todos) {
     this.$todos = todos || [];
 }
 
-renderList(this.$todos);
+// var myList = new ToDoList(); ///////////////////////////////
 
 ToDoList.prototype.renderList = function(items) {
+    if(!items) {
+        return;
+    }
     var listHTML = '';
 
     items.forEach(function (item) {
-        listHTML += ('<li><input type="checkbox" onclick = "markAsComplete("' + item.id + ')"' // name="vehicle" value="Bike"'
-         + (item.completed ? 'checked' : '')   +'>'
-         + (item.completed ? '<s>'+item.title+'</s>' : item.title)
-         + ' <a href="#" onclick="deleteItem('+ item.id +')">X</a></li>');
+        listHTML += ('<li><input type="checkbox" onclick = "markAsComplete("' + item.$id + ')"' // name="vehicle" value="Bike"'
+         + (item.$completed ? 'checked' : '')   +'>'
+         + (item.$completed ? '<s>'+item.$title+'</s>' : item.$title)
+         + ' <a href="#" onclick="deleteItem('+ item.$id +')">X</a></li>');
     });
 
     document.getElementById("todo-list").innerHTML = listHTML;
-}
+};
+
+ToDoList.prototype.renderList(this.$todos);
 
 ToDoList.ID = 0;
 
@@ -32,7 +37,7 @@ ToDoList.prototype.getCount = function() {
     var count = this.$todos.length;
     document.getElementById("all-tasks").innerHTML = count;
     return count;
-}
+};
 
 ToDoList.prototype.getCompletedCount = function() {
     var completedCount = this.$todos.length;
@@ -42,19 +47,23 @@ ToDoList.prototype.getCompletedCount = function() {
         }
     }
     return completedCount;
+};
+
+function addNewItem() {
+    ToDoList.prototype.addItem();
 }
 
 ToDoList.prototype.addItem = function() {
     var elNewTask = document.getElementById('new-task');
     var title = elNewTask.value.trim();
-    elNewTask.focus();
+    // elNewTask.focus();
     if (!title) {
         alert("Please input valid title");
         return;
     }
 
-    this.$todos.push({
-        id: ++ID,
+    $todos.push({
+        id: ToDoList.ID++,
         title: title,
         completed: false
     });
@@ -63,7 +72,7 @@ ToDoList.prototype.addItem = function() {
 
     renderList(this.$todos);
     elNewTask.focus(); //put the cursor back inside the input field
-}
+};
 
 ToDoList.prototype.deleteItem = function(id) {
     var item = this.$todos.indexOf(this.$todos.find(function(v) {
@@ -73,18 +82,18 @@ ToDoList.prototype.deleteItem = function(id) {
     --ID;
     renderList(this.$todos);
     document.getElementById('new-task').focus(); //put the cursor back inside the input field
-}
+};
 
-ToDoList.prototype.markAsComplete = function(id) {  ////////////////////////////
-    var itemComplete = this.$todos.indexOf(this.$todos.find(function(v) {
-        return v.id == id;
-    }));
-    itemComplete.completed = true;
-    <s>...</s> //"strike through" formatting
-    listHTML += ('<li><input type="checkbox" onclick = "markAsComplete("' + item.id + ')"' // name="vehicle" value="Bike"'
-     + (item.completed ? 'checked' : '')   +'>'
-     + item.title + ' <a href="#" onclick="deleteItem('+ item.id +')">X</a></li>');
-}
+// ToDoList.prototype.markAsComplete = function(id) {  ////////////////////////////
+//     var itemComplete = this.$todos.indexOf(this.$todos.find(function(v) {
+//         return v.id == id;
+//     }));
+//     itemComplete.completed = true;
+//     // <s>...</s> //"strike through" formatting
+//     listHTML += ('<li><input type="checkbox" onclick = "markAsComplete("' + item.id + ')"' // name="vehicle" value="Bike"'
+//      + (item.completed ? 'checked' : '')   +'>'
+//      + item.title + ' <a href="#" onclick="deleteItem('+ item.id +')">X</a></li>');
+// }
 
 ToDoList.prototype.filter = function(){
     var selectedArray = [];
@@ -106,7 +115,7 @@ ToDoList.prototype.filter = function(){
     }
     renderList(selectedArray);
     return selectedArray;
-}
+};
 
 ToDoList.prototype.search = function() {
     var searchArray = filter();
@@ -123,7 +132,7 @@ ToDoList.prototype.search = function() {
             return;
         }
     }
-}
+};
 //{
 //    id:
 //    completed: true/false,
