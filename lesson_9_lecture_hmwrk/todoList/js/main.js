@@ -1,37 +1,38 @@
-// var ID = 0;
-// var todos = [];
-
 function ToDoItem(id, title, completed) {
     this.$id = id;
     this.$title = title;
-    this.$completed = completed;
+    this.$completed = completed || false;
 }
 
 function ToDoList(todos) {
     this.$todos = todos || [];
 }
 
-// var myList = new ToDoList(); ///////////////////////////////
-
-ToDoList.prototype.renderList = function(items) {
+ToDoList.prototype.renderList = function() {
+    var items = this.$todos;
     if(!items) {
         return;
     }
     var listHTML = '';
 
     items.forEach(function (item) {
-        listHTML += ('<li><input type="checkbox" onclick = "markAsComplete("' + item.$id + ')"' // name="vehicle" value="Bike"'
+        listHTML += ('<li>' +
+        '<input type="checkbox" onclick = "markAsComplete("' + item.id + ')"'
          + (item.$completed ? 'checked' : '')   +'>'
-         + (item.$completed ? '<s>'+item.$title+'</s>' : item.$title)
-         + ' <a href="#" onclick="deleteItem('+ item.$id +')">X</a></li>');
+         + (item.$completed ? ('<s>'+item.$title+'</s>') : item.$title)
+         + ' <a href="#" onclick="deleteItem('+ item.id +')">X</a></li>');
     });
+
+    // listHTML += ('<li>' +
+    //     '<input type="checkbox" onclick = "markAsComplete("' + item.id + ')"'
+    //      + (item.$completed ? 'checked' : '')   +'>'
+    //      + (item.$completed ? '<s>'+item.title+'</s>' : item.title)
+    //      + ' <a href="#" onclick="deleteItem('+ item.id +')">X</a></li>');
 
     document.getElementById("todo-list").innerHTML = listHTML;
 };
 
-ToDoList.prototype.renderList(this.$todos);
-
-ToDoList.ID = 0;
+// ToDoList.prototype.renderList(this.$todos);
 
 ToDoList.prototype.getCount = function() {
     var count = this.$todos.length;
@@ -49,29 +50,20 @@ ToDoList.prototype.getCompletedCount = function() {
     return completedCount;
 };
 
-function addNewItem() {
-    ToDoList.prototype.addItem();
-}
-
-ToDoList.prototype.addItem = function() {
-    var elNewTask = document.getElementById('new-task');
-    var title = elNewTask.value.trim();
-    // elNewTask.focus();
+ToDoList.prototype.addItem = function(title) {
+    title = title.trim();
     if (!title) {
         alert("Please input valid title");
         return;
     }
 
-    $todos.push({
+    this.$todos.push({
         id: ToDoList.ID++,
         title: title,
         completed: false
     });
 
-    elNewTask.value = '';
-
-    renderList(this.$todos);
-    elNewTask.focus(); //put the cursor back inside the input field
+    this.renderList();
 };
 
 ToDoList.prototype.deleteItem = function(id) {
@@ -80,7 +72,7 @@ ToDoList.prototype.deleteItem = function(id) {
     }));
     this.$todos.splice(item, 1);
     --ID;
-    renderList(this.$todos);
+    this.renderList();
     document.getElementById('new-task').focus(); //put the cursor back inside the input field
 };
 
@@ -113,7 +105,7 @@ ToDoList.prototype.filter = function(){
             }
         }
     }
-    renderList(selectedArray);
+    this.renderList();
     return selectedArray;
 };
 
@@ -126,13 +118,24 @@ ToDoList.prototype.search = function() {
         alert("Please input valid title");
         return;
     }
-    for(var i = 0; i < searchArray.length; i++){
+    for(var i = 0; i < searchArray.length; i++) {
         if(title.toLowerCase() == searchArray[i].$title.toLowerCase()) {
             document.getElementById("search").innerHTML = searchArray[i].$title;
             return;
         }
     }
 };
+
+var myList = new ToDoList();
+ToDoList.ID = 0;
+
+function addNewItem() {
+    var input = document.getElementById('new-task');
+    myList.addItem(input.value);
+    input.value = '';
+    input.focus();
+}
+
 //{
 //    id:
 //    completed: true/false,
